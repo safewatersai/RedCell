@@ -23,34 +23,61 @@
     header { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; padding: 0 2rem; text-align: center; background: linear-gradient(160deg, var(--secondary-color) 50%, var(--primary-color) 100%); color: white; clip-path: ellipse(150% 100% at 50% 0%); }
     header h1 { font-size: 3rem; margin-bottom: 1rem; font-weight: 600; }
     header p { font-size: 1.2rem; margin-bottom: 2rem; max-width: 600px; line-height: 1.5; }
-    header button, header .contact-btn { background: white; color: var(--secondary-color); border: none; padding: 0.8rem 2rem; font-size: 1rem; border-radius: 4px; cursor: pointer; transition: background 0.3s ease; font-weight: 600; margin: 0.5rem; }
-    header button:hover, header .contact-btn:hover { background: #ccc; }
-    .contact-btn { background: var(--primary-color); color: white; }
-    .contact-btn:hover { background: #b21010; }
+    header .contact-btn { background: var(--primary-color); color: white; border: none; padding: 0.8rem 2rem; font-size: 1rem; border-radius: 4px; cursor: pointer; transition: background 0.3s ease; font-weight: 600; }
+    header .contact-btn:hover { background: #b21010; }
     section { width: 90%; max-width: 1200px; margin: 3rem auto; text-align: center; }
-    section h2 { font-size: 2rem; margin-bottom: 1.5rem; color: var(--secondary-color); }
-    .features { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; }
-    .feature { flex: 1 1 300px; background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1); border-radius: 8px; padding: 2rem; transition: transform 0.3s ease; }
-    .feature:hover { transform: translateY(-5px); }
-    .feature h3 { color: var(--primary-color); margin-bottom: 1rem; font-size: 1.3rem; font-weight: 600; }
-    .feature p { font-size: 1rem; line-height: 1.4; color: var(--accent-color); }
-    .steps { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; margin-top: 2rem; }
-    .step { flex: 1 1 250px; background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); padding: 1.5rem; text-align: center; }
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: var(--secondary-color);
+    }
+    
+    /* Highlight Detect & Deter */
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin: 1.5rem 0;
+    }
+    .features .feature:nth-child(1),
+    .features .feature:nth-child(2) {
+      background: #ddd;
+      padding: 1.5rem;
+      border-radius: 12px;
+    }
+    .features .feature:nth-child(1) h3,
+    .features .feature:nth-child(2) h3 {
+      color: var(--primary-color);
+      font-size: 1.5rem;
+    }
+    .features .feature:nth-child(1) p,
+    .features .feature:nth-child(2) p {
+      color: var(--secondary-color);
+    }/* Steps grid */
+    .steps {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  @media (max-width: 768px) {
+    .steps {
+      grid-template-columns: 1fr;
+    }
+  }
+    .step { background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); padding: 2rem; text-align: center; }
     .step img { width: 100%; height: auto; border-radius: 4px; margin-bottom: 1rem; }
-    .step h3 { font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--primary-color); }
-    .step p { font-size: 0.95rem; line-height: 1.4; }
+    .step h3 { font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--primary-color); }
+    .step p { font-size: 1rem; line-height: 1.4; }
+    /* Step 5 full width and smaller box */
+    .step5 { grid-column: 1 / -1; padding: 1.5rem; }
+    .step5 img { margin-top: 1rem; max-width: 400px; }
     .split { display: flex; flex-wrap: wrap; align-items: center; margin-top: 4rem; gap: 2rem; }
     .split img { flex: 1 1 400px; max-width: 100%; border-radius: 8px; }
     .split-text { flex: 1 1 400px; text-align: left; }
     .split-text h3 { color: var(--primary-color); margin-bottom: 1rem; }
     .split-text p { line-height: 1.4; }
-    .faq { margin-top: 4rem; text-align: left; }
-    .faq h2 { text-align: center; margin-bottom: 2rem; }
-    .faq-item { background: #fff; margin-bottom: 1rem; border-radius: 8px; padding: 1rem; cursor: pointer; transition: background 0.3s ease; }
-    .faq-item:hover { background: #eee; }
-    .faq-question { font-weight: 600; display: flex; align-items: center; justify-content: space-between; }
-    .faq-question span { transition: transform 0.3s ease; }
-    .faq-answer { display: none; margin-top: 0.5rem; line-height: 1.4; }
     .founders { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; margin-top: 4rem; }
     .founder { flex: 1 1 300px; background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); padding: 2rem; text-align: center; }
     .founder img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; }
@@ -58,11 +85,25 @@
     .founder p { font-size: 1rem; line-height: 1.5; margin-bottom: 1rem; }
     .founder a { color: var(--primary-color); font-weight: 600; text-decoration: none; }
     .founder a:hover { text-decoration: underline; }
+    .faq { margin-top: 4rem; text-align: left; }
+    .faq h2 { text-align: center; margin-bottom: 2rem; }
+    .faq-item { background: #fff; margin-bottom: 1rem; border-radius: 8px; padding: 1rem; cursor: pointer; transition: background 0.3s ease; }
+    .faq-item:hover { background: #eee; }
+    .faq-question { font-weight: 600; display: flex; align-items: center; justify-content: space-between; }
+    .faq-question span { transition: transform 0.3s ease; }
+    .faq-answer { display: none; margin-top: 0.5rem; line-height: 1.4; }
     footer { text-align: center; background: var(--secondary-color); color: white; padding: 2rem 1rem; margin-top: 4rem; }
     .footer-cta { margin-bottom: 1rem; display: flex; flex-direction: column; align-items: center; }
     .footer-cta h2 { font-family: 'Orbitron', sans-serif; margin-bottom: 0.5rem; }
     .cta-btn { background: var(--primary-color); color: white; border: none; padding: 1rem 2rem; font-size: 1rem; border-radius: 4px; cursor: pointer; transition: background 0.3s ease; font-weight: 600; }
     .cta-btn:hover { background: #b21010; }
+    @media (max-width: 768px) {
+      header h1 { font-size: 2.2rem; }
+      header p { font-size: 1rem; }
+      .steps { display: flex; flex-direction: column; }
+      .step5 { grid-column: auto; }
+      .features, .founders, .split { flex-direction: column; align-items: center; }
+    }
   </style>
 </head>
 <body>
@@ -82,7 +123,7 @@
       <div class="step"><img src="step2.png" alt="Step 2: Imagery Analysis"><h3>Step 2: Imagery Analysis</h3><p>Our AI retrieves and processes satellite imagery (Google Earth or MAXAR) to map terrain and structures.</p></div>
       <div class="step"><img src="step3.png" alt="Step 3: Threat Axis Identification"><h3>Step 3: Threat Axis Identification</h3><p>An AI model pinpoints likely approach vectors and identifies critical blind spots.</p></div>
       <div class="step"><img src="step4.png" alt="Step 4: Recommendation Generation"><h3>Step 4: Recommendation Generation</h3><p>Generate detailed recommendations for device placement tailored to your operational tiers.</p></div>
-      <div class="step"><img src="step5.jpg" alt="Step 5: Integrate & Deploy"><h3>Step 5: Integrate & Deploy</h3><p>Integrate our blueprint into your workflows to provide turnkey security designs to your clients.</p></div>
+      <div class="step step5"><h3>Step 5: Integrate & Deploy</h3><p>Integrate our blueprint into your workflows to provide turnkey security designs to your clients.</p><img src="step5.jpg" alt="Step 5: Integrate & Deploy"></div>
     </div>
     <div class="split">
       <img src="https://via.placeholder.com/600x400" alt="Satellite Imagery Example">
@@ -96,6 +137,13 @@
         <div class="founder"><img src="photo-smaller.png" alt="Evan Valenti"><h3>Evan Valenti</h3><p>Evan is the founder of multiple AI-based companies, most notably SafeWaters.ai, which uses neural networks trained on shark attack and marine weather data to forecast shark risk at beaches. His peer-reviewed, published research set the precedent for real-world application of artificial intelligence, making his expertise a strong complement to Mike’s military and security background. Together, they bring a unique blend of innovation and tactical experience to residential services. Evan also brings six years of freelance experience in SEO and web development.</p><a href="#" target="_blank">LinkedIn</a></div>
       </div>
     </section>
+    <!-- FAQ Section -->
+    <div class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-question"><span>How do I integrate the API?</span><span>+</span></div><div class="faq-answer"><p>Simply obtain your API key, review our docs, and start sending address requests to receive security blueprints in JSON format.</p></div></div>
+      <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-question"><span>What data sources are used?</span><span>+</span></div><div class="faq-answer"><p>We leverage open-source satellite imagery (Google Earth, MAXAR) combined with proprietary military-validated analysis algorithms.</p></div></div>
+      <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-question"><span>Can I customize recommendations?</span><span>+</span></div><div class="faq-answer"><p>Yes—configure parameters such as budget tiers and defensive priorities to tailor outputs for different client needs.</p></div></div>
+    </div>
   </section>
   <footer>
     <div class="footer-cta" style="margin-bottom: 1rem; text-align: center;">
@@ -112,3 +160,4 @@
   </script>
 </body>
 </html>
+
